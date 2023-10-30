@@ -1,0 +1,113 @@
+GET _cluster/health
+
+GET _nodes/stats
+
+// Creating an index (like database)
+PUT favorite_candy
+
+// Adding a document without id, id is automatic
+POST favorite_candy/_doc
+{
+  "firstname":"Lisa",
+  "candy":"Sour Skittles"
+}
+
+// Adding a document with id
+PUT favorite_candy/_doc/1
+{
+  "firstname":"Özgürhan",
+  "candy":"Jelibon"
+}
+
+// Error 
+PUT favorite_candy/_create/1 
+{
+  "firstname":"Kadir",
+  "candy":"Nutella"
+}
+
+// Getting
+GET favorite_candy/_doc/1
+
+// Update
+POST favorite_candy/_update/1
+{
+  "doc":{
+    "firstname":"Kadir"
+  }
+}
+
+// Deleting
+
+DELETE favorite_candy/_doc/1
+
+// Creating destinations document
+PUT destinations
+
+
+POST destinations/_doc
+{
+  "travel_destination":"İzmir"
+}
+
+GET destinations/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+DELETE destinations/_doc/wXlegYsBWFSOdve83mo_
+
+PUT destinations/_doc/1
+{
+  "travel_destination":"İzmir"
+}
+PUT destinations/_doc/2
+{
+  "travel_destination":"İstanbul"
+}
+
+PUT destinations/_doc/3
+{
+  "travel_destination":"Ankara"
+}
+
+PUT destinations/_doc/4
+{
+  "travel_destination":"Bursa"
+}
+
+PUT destinations/_doc/5
+{
+  "travel_destination":"Diyarbakır"
+}
+
+// To get all destinations
+GET destinations/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+
+// To get specific document
+GET destinations/_doc/1
+
+GET destinations/_doc/2
+
+
+GET destinations/_doc/3
+
+GET destinations/_doc/4
+
+POST destinations/_update/2
+{
+  "doc": {
+    "travel_destination" : "Kocaeli"
+  }
+}
+
+DELETE destinations/_doc/3
+
